@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "dc-util"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{An utility gem that contains useful data structures.}
+    gem.description = %Q{An utility gem that contains useful data structures, like tree node, etc.}
     gem.email = "dorrenchen@gmail.com"
     gem.homepage = "http://github.com/dorren/dc-util"
     gem.authors = ["Dorren Chen"]
