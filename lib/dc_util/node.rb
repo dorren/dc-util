@@ -3,17 +3,16 @@ module DcUtil
   class Node
     attr_accessor :children, :data, :parent
   
-    def initialize(data, values=[])
-      self.data = data
+    def initialize(options={})
+      self.data = options[:data]
       self.children = []
-      values.each{|x| self.add(x)}
     end
 
     class << self
       # breath first search
       def bfs(node, queue, &block)
         return if node.nil?
-        block.call(node.data)
+        block.call(node)
 
         node.children.each{|x| queue.push(x)}
         bfs(queue.shift, queue, &block)
@@ -21,7 +20,7 @@ module DcUtil
 
       # depth first search
       def dfs(node, &block)
-        block.call(node.data)
+        block.call(node)
         node.children.each{|x| dfs(x, &block)}
       end
     end
