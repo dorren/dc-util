@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Dorren Chen"]
-  s.date = %q{2010-05-30}
+  s.date = %q{2010-08-11}
   s.description = %q{An utility gem that contains useful data structures, like tree node, etc.}
   s.email = %q{dorrenchen@gmail.com}
   s.extra_rdoc_files = [
@@ -23,7 +23,11 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "dc-util.gemspec",
      "lib/dc-util.rb",
+     "lib/dc_util.rb",
+     "lib/dc_util/node.rb",
+     "spec/node_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -33,7 +37,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{An utility gem that contains useful data structures.}
   s.test_files = [
-    "spec/node_spec.rb",
+    "spec/binary_node_spec.rb",
+     "spec/node_spec.rb",
      "spec/spec_helper.rb"
   ]
 

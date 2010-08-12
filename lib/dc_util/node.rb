@@ -26,10 +26,11 @@ module DcUtil
       end
     end
     
-    def add(node)
+    def add(node, &block)
       raise ArgumentError.new("not a valid node class") unless node.kind_of? self.class
       children << node
       node.parent = self
+      yield self if block_given?
     end
     
     def parents
