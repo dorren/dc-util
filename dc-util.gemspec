@@ -26,7 +26,9 @@ Gem::Specification.new do |s|
      "dc-util.gemspec",
      "lib/dc-util.rb",
      "lib/dc_util.rb",
+     "lib/dc_util/binary_node.rb",
      "lib/dc_util/node.rb",
+     "spec/binary_node_spec.rb",
      "spec/node_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
