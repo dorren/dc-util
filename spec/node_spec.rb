@@ -122,5 +122,9 @@ describe DcUtil::Node do
       @tree.dfs(true){|node| arr << node.data}
       arr.should == [2,4,8,9,5,10,3,6,7]
     end
+    
+    it "should count tree size" do
+      @tree.tree_size.should == 10
+    end
   end
 end

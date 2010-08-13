@@ -43,6 +43,12 @@ module DcUtil
     def dfs(exclude_root=false, &block)
       self.class.dfs(self, exclude_root, &block)
     end
+    
+    def tree_size
+      n = 0
+      dfs{|x| n += 1}
+      n
+    end
   end
 end
 
