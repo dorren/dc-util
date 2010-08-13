@@ -10,18 +10,18 @@ module DcUtil
 
     class << self
       # breath first search
-      def bfs(node, queue, &block)
+      def bfs(node, queue, exclude_root, &block)
         return if node.nil?
-        block.call(node)
+        block.call(node) unless exclude_root
 
         node.children.each{|x| queue.push(x)}
-        bfs(queue.shift, queue, &block)
+        bfs(queue.shift, queue, false, &block)
       end
 
       # depth first search
-      def dfs(node, &block)
-        block.call(node)
-        node.children.each{|x| dfs(x, &block)}
+      def dfs(node, exclude_root, &block)
+        block.call(node) unless exclude_root
+        node.children.each{|x| dfs(x, false, &block)}
       end
     end
     
@@ -36,12 +36,12 @@ module DcUtil
       parent ? [parent] + parent.parents : []
     end
     
-    def bfs(&block)
-      self.class.bfs(self, [], &block)
+    def bfs(exclude_root=false, &block)
+      self.class.bfs(self, [], exclude_root, &block)
     end
     
-    def dfs(&block)
-      self.class.dfs(self, &block)
+    def dfs(exclude_root=false, &block)
+      self.class.dfs(self, exclude_root, &block)
     end
   end
 end

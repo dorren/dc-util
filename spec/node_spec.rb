@@ -105,10 +105,22 @@ describe DcUtil::Node do
       arr.should == [1,2,3,4,5,6,7,8,9,10]
     end
     
+    it "should do bfs exclude root" do
+      arr = []
+      @tree.bfs(true){|node| arr << node.data}
+      arr.should == [2,3,4,5,6,7,8,9,10]
+    end
+    
     it "should do dfs" do
       arr = []
       @tree.dfs{|node| arr << node.data}
       arr.should == [1,2,4,8,9,5,10,3,6,7]
+    end
+    
+    it "should do dfs exclude root" do
+      arr = []
+      @tree.dfs(true){|node| arr << node.data}
+      arr.should == [2,4,8,9,5,10,3,6,7]
     end
   end
 end
