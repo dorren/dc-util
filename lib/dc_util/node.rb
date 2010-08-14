@@ -44,6 +44,14 @@ module DcUtil
       self.class.dfs(self, exclude_root, &block)
     end
     
+    def leaves
+      arr = []
+      self.dfs do |node|
+        arr << node if node.children.empty?
+      end
+      arr
+    end
+    
     def tree_size
       n = 0
       dfs{|x| n += 1}
