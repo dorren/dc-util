@@ -1,6 +1,6 @@
 = dc-util
 
-Description goes here.
+A library for data structures. Currently only has Node and BinaryNode class.
 
 == Note on Patches/Pull Requests
  

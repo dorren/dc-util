@@ -38,26 +38,35 @@ module DcUtil
       end
     end
     
-    def add(node, &block)
+    # add a child node. 
+    def add(node)
       raise ArgumentError.new("not a valid node class") unless node.kind_of? self.class
       children << node
       node.parent = self
-      yield self if block_given?
     end
     
     def parents
       parent ? [parent] + parent.parents : []
     end
     
+    # breath first search
+    #   root.bfs{|node| puts node.inspect}
+    #
+    #   root.bfs(true){|node| puts node.inspect}  # skip first node
     def bfs(exclude_root=false, &block)
       # self.class.bfs(self, [], exclude_root, &block)
       self.class.bfs_non_recursive(self, [], exclude_root, &block)
     end
     
+    # depth first search
+    #   root.dfs{|node| puts node.inspect}
+    #
+    #   root.dfs(true){|node| puts node.inspect}  # skip first node
     def dfs(exclude_root=false, &block)
       self.class.dfs(self, exclude_root, &block)
     end
     
+    # return all nodes that has no children
     def leaves
       arr = []
       self.dfs do |node|
@@ -66,6 +75,7 @@ module DcUtil
       arr
     end
     
+    # return all nodes count
     def tree_size
       n = 0
       dfs{|x| n += 1}

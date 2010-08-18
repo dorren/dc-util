@@ -1,9 +1,11 @@
 module DcUtil
   class BinaryNode < Node
+    # returns left child
     def left
       children[0]
     end
     
+    # returns right child
     def right
       children[1]
     end
