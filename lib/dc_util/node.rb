@@ -17,7 +17,20 @@ module DcUtil
         node.children.each{|x| queue.push(x)}
         bfs(queue.shift, queue, false, &block)
       end
-
+      
+      # breath first search, non recursive style to prevent stack overflow
+      def bfs_non_recursive(node, queue, exclude_root, &block)
+        return if node.nil?
+        queue.push(node)
+        
+        while not queue.empty?
+          node = queue.shift
+          block.call(node) unless exclude_root
+          node.children.each{|x| queue.push(x)}
+          exclude_root = false
+        end
+      end
+      
       # depth first search
       def dfs(node, exclude_root, &block)
         block.call(node) unless exclude_root
@@ -37,7 +50,8 @@ module DcUtil
     end
     
     def bfs(exclude_root=false, &block)
-      self.class.bfs(self, [], exclude_root, &block)
+      # self.class.bfs(self, [], exclude_root, &block)
+      self.class.bfs_non_recursive(self, [], exclude_root, &block)
     end
     
     def dfs(exclude_root=false, &block)
